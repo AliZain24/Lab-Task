@@ -1,0 +1,346 @@
+#include<iostream>
+#include<string>
+
+using namespace std;
+
+class musicband
+{
+	protected:
+		int count;
+		virtual void setcount(int count)=0;
+};
+
+class symphony:musicband
+{
+	private:
+		string conductor;
+	public:
+		void setcount(int count);
+		int getband(void);
+		string getconductor(void);
+		void setconductor(string conductor);
+		void add(int size);
+		void remove(int size);
+};
+
+void symphony::remove(int size)
+{
+	count=count-size;
+}
+
+void symphony::add(int size)
+{
+	count=count+size;
+}
+
+void symphony::setconductor(string conductor)
+{
+	this->conductor=conductor;
+}
+
+void symphony::setcount(int count)
+{
+	this->count=count;
+}
+
+int symphony::getband(void)
+{
+	return this->count;
+}
+
+string symphony::getconductor(void)
+{
+	return this->conductor;
+}
+
+
+
+
+
+class metalband:musicband
+{
+	private:
+		int pyro;
+	public:
+		void setcount(int count);
+		int getband(void);
+		int getpyro(void);
+		void setpyro(int pyro);
+		void removep(int size);
+		void addp(int size);
+		void addb(int size);
+		void removeb(int size);
+};
+
+void metalband::addb(int size)
+{
+	count=count+size;
+}
+
+void metalband::addp(int size)
+{
+	pyro=pyro+size;
+}
+
+void metalband::removeb(int size)
+{
+	count=count-size;
+}
+
+void metalband::removep(int size)
+{
+	pyro=pyro-size;
+}
+
+void metalband::setpyro(int pyro)
+{
+	this->pyro=pyro;
+}
+
+void metalband::setcount(int count)
+{
+	this->count=count;
+}
+
+int metalband::getband(void)
+{
+	return this->count;
+}
+
+int metalband::getpyro(void)
+{
+	return this->pyro;
+}
+
+
+
+
+
+class marchingband:musicband
+{
+	private:
+		
+	public:
+		void setcount(int count);
+		int getcount(void);
+		void addband(int size);
+		void removeband(int size);
+};
+
+void marchingband::addband(int size)
+{
+	count=count+size;
+}
+
+void marchingband::removeband(int size)
+{
+	count=count-size;
+}
+
+void marchingband::setcount(int count)
+{
+	this->count=count;
+}
+
+int marchingband::getcount(void)
+{
+	return this->count;
+}
+
+
+
+
+
+class jazzband:musicband
+{
+	private:
+		
+	public:
+		void setcount(int count);
+		int getcount(void);
+		void addmember(int size);
+		void removemember(int size);
+};
+
+void jazzband::addmember(int size)
+{
+	count=count+size;
+}
+
+void jazzband::removemember(int size)
+{
+	count=count+size;
+}
+
+void jazzband::setcount(int count)
+{
+	this->count=count;
+}
+
+int jazzband::getcount(void)
+{
+	return this->count;
+}
+
+int main(void)
+{
+	while(1)
+	{
+	int choice1,choice2,count;
+	cout<<"What type of band do you want to enter the data of?"<<endl;
+	cout<<"To enter the data of metal band, enter 1"<<endl;
+	cout<<"To enter the data of symphony,enter 2"<<endl;
+	cout<<"To enetr the data of jazz band, enter 3"<<endl;
+	cout<<"To enter the data of marching band,enter 4"<<endl;
+	cout<<"To exit the program, enter 5"<<endl;
+	cout<<"Your choice:";
+	cin>>choice1;
+	if(choice1==2)
+	{
+		string conductor;
+		symphony zain;
+		cout<<"Please enter the number of band members of symphony:";
+		cin>>count;
+		zain.setcount(count);
+		cout<<"Please enter the name of the conductor:";
+		cin>>conductor;
+		zain.setconductor(conductor);
+		cout<<"Total number of band members: "<<count<<endl;
+		cout<<"Name of conductor: "<<conductor<<endl;
+		cout<<"Do you want to add/remove members from the band (6 for add, 7 for remove, 8 for nothing):";
+		cin>>choice2;
+		if(choice2==6)
+		{
+			cout<<"Number of members you want to remove:";
+			cin>>count;
+			zain.remove(count);
+			cout<<endl;
+		}
+		if(choice2==7)
+		{
+			cout<<"Number of members you want to add:";
+			cin>>count;
+			zain.add(count);
+			cout<<endl;
+		}
+		if(choice2==8)
+		{
+			cout<<"OK"<<endl;
+		}
+		cout<<"Total number of band members: "<<zain.getband()<<endl;
+		cout<<"Name of conductor: "<<zain.getconductor()<<endl;
+	}
+	if(choice1==1)
+	{
+		int pyro;
+		metalband sarfraz;
+		cout<<"Please enter the number of band members of metal band:";
+		cin>>count;
+		sarfraz.setcount(count);
+		cout<<"Please enter the number of pyro technicians:";
+		cin>>pyro;
+		sarfraz.setpyro(pyro);
+		cout<<"Total number of band members: "<<count<<endl;
+		cout<<"Total number of pyro technicians: "<<pyro<<endl;
+		cout<<"Do you want to add/remove members from the band (6 for add band members, 7 for remove band members, 8 for remove pyro members, 9 for remove pyro members, 0 for nothing):";
+		cin>>choice2;
+		if(choice2==6)
+		{
+			cout<<"Number of members you want to remove:";
+			cin>>count;
+			sarfraz.removeb(count);
+			cout<<endl;
+		}
+		if(choice2==7)
+		{
+			cout<<"Number of members you want to add:";
+			cin>>count;
+			sarfraz.addb(count);
+			cout<<endl;
+		}
+		if(choice2==8)
+		{
+			cout<<"Number of members you want to remove:";
+			cin>>count;
+			sarfraz.removep(count);
+			cout<<endl;
+		}
+		if(choice2==9)
+		{
+			cout<<"Number of members you want to add:";
+			cin>>count;
+			sarfraz.addp(count);
+			cout<<endl;
+		}
+		if(choice2==0)
+		{
+			cout<<"OK";
+		}
+		cout<<"Total number of band members: "<<sarfraz.getband()<<endl;
+		cout<<"Total number of pyrotechnicians: "<<sarfraz.getpyro()<<endl;
+	}
+	if(choice1==4)
+	{
+		marchingband faseeh;
+		cout<<"Please enter the band members of the marching band:";
+		cin>>count;
+		faseeh.setcount(count);
+		cout<<"Total number of band members: "<<count<<endl;
+		cout<<"Do you want to add/remove members from the band (6 for add, 7 for remove, 8 for nothing):";
+		cin>>choice2;
+		if(choice2==6)
+		{
+			cout<<"Number of members you want to remove:";
+			cin>>count;
+			faseeh.removeband(count);
+			cout<<endl;
+		}
+		if(choice2==7)
+		{
+			cout<<"Number of members you want to add:";
+			cin>>count;
+			faseeh.addband(count);
+			cout<<endl;
+		}
+		if(choice2==8)
+		{
+			cout<<"OK"<<endl;
+		}
+		cout<<"Total number of band members: "<<faseeh.getcount()<<endl;
+	}
+	if(choice1==3)
+	{
+		jazzband arslan;
+		cout<<"Please enter the band members of the jazz band:";
+		cin>>count;
+		arslan.setcount(count);
+		cout<<"Total number of band members: "<<count<<endl;
+		cout<<"Do you want to add/remove members from the band (6 for add, 7 for remove, 8 for nothing):";
+		cin>>choice2;
+		if(choice2==6)
+		{
+			cout<<"Number of members you want to remove:";
+			cin>>count;
+			arslan.removemember(count);
+			cout<<endl;
+		}
+		if(choice2==7)
+		{
+			cout<<"Number of members you want to add:";
+			cin>>count;
+			arslan.addmember(count);
+			cout<<endl;
+		}
+		if(choice2==8)
+		{
+			cout<<"OK"<<endl;
+		}
+		cout<<"Total number of band members: "<<arslan.getcount()<<endl;
+	}
+	if(choice1==5)
+	{
+		cout<<"Your program has ended according to your choice";
+		break;
+	}
+	}
+}
